@@ -28,7 +28,6 @@ class ViewController: UIViewController {
     @IBOutlet var six_bt: UIButton!
     @IBOutlet var five_bt: UIButton!
     @IBOutlet var multiply_bt: UIButton!
-    
     @IBOutlet var nine_bt: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
