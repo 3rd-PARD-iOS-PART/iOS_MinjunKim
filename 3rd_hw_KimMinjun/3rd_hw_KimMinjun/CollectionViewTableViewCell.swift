@@ -49,7 +49,7 @@ class CollectionViewTableViewCell : UITableViewCell{
     }
 }
 
-
+// 콜렉션뷰 익스텐션
 extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
     // 셀 불러오기
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -68,6 +68,9 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionVie
     }
 }
 
+
+
+// cell 에 이미지 넣기 ! 연습해보기 !
 class CollectionViewCell : UICollectionViewCell {
     
     let image : UIImageView = {

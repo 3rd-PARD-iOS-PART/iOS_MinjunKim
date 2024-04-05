@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+// 컴포넌트들 설정하는 클래스
 class HeroHeaderUIView: UIView {
         
     // 컴포넌트들 올리기 (1. 만든다. 2. 올린다. 3. 고정한다.) to 민혁이형 나이스
@@ -105,6 +105,10 @@ class HeroHeaderUIView: UIView {
 //        gradientLayer.frame = bounds
 //        layer.addSublayer(gradientLayer)
 //    }
+    
+    
+    
+    // view에 올리기
     override init(frame:CGRect){
         super.init(frame: frame)
         addSubview(heroImageView)
@@ -119,7 +123,7 @@ class HeroHeaderUIView: UIView {
         applyConstraints()
     }
     
-    
+    // constraint 설정하기
     private func applyConstraints(){
          let playButtonContstraints = [
 //            playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
