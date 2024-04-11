@@ -1,14 +1,15 @@
 //
-//  HeroHeaderUIView.swift
-//  netflix_pr
+//  HeadearUIView.swift
+//  4th_hw_KimMinjun
 //
-//  Created by 김민준 on 4/4/24.
+//  Created by 김민준 on 4/9/24.
 //
+
 
 import UIKit
 
 // 컴포넌트들 설정하는 클래스
-class HeroHeaderUIView: UIView {
+class HeaderUIView: UIView {
         
     // 컴포넌트들 올리기 (1. 만든다. 2. 올린다. 3. 고정한다.) to 민혁이형 나이스
     private let myListButton : UIButton = {
@@ -20,22 +21,67 @@ class HeroHeaderUIView: UIView {
         button.alignTextBelow(spacing: 4)
         return button
     }()
-    private let playButton : UIButton = {
-       let button = UIButton()
-        button.setTitle("Play", for: .normal)
-        button.layer.borderColor = UIColor.white.cgColor
-        button.layer.borderWidth = 1
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "Vector")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 10
-        
-        
-        button.setBackgroundColor(.white, for: .normal)
-        button.setBackgroundColor(.gray, for: .selected)
-        button.setBackgroundColor(.gray, for: .disabled)
-        return button
+//    private let playButton : UIButton = {
+//       let button = UIButton()
+//        
+//        button.setTitle("Play", for: .normal)
+//        button.layer.borderColor = UIColor.white.cgColor
+//        button.layer.borderWidth = 1
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.setImage(UIImage(named: "Vector")?.withRenderingMode(.alwaysOriginal), for: .normal)
+//        button.setTitleColor(.black, for: .normal)
+//        button.layer.cornerRadius = 10
+//        
+//        
+//        button.setBackgroundColor(.white, for: .normal)
+//        button.setBackgroundColor(.gray, for: .selected)
+//        button.setBackgroundColor(.gray, for: .disabled)
+//        return button
+//    }()
+    
+    
+
+    let playButton : UIButton = {
+        var config = UIButton.Configuration.filled()
+        config.background.backgroundColor = UIColor.lightGray
+        config.title = "Play"
+        config.image = UIImage(named:"play_bt")
+        config.imagePadding = 15
+        config.titlePadding = 15
+        config.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
+        config.baseForegroundColor = .black
+    
+        let playButton = UIButton(configuration: config)
+        playButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.46, weight: .semibold)
+        playButton.translatesAutoresizingMaskIntoConstraints = false
+        return playButton
     }()
+    
+    
+    
+    
+    
+//
+//    // "Play" 버튼 생성
+//           let button2: UIButton = {
+//               var configuration = UIButton.Configuration.filled()
+//               configuration.background.backgroundColor = UIColor.lightGray
+//               configuration.title = "Play"
+//               configuration.image = UIImage(named: "play")
+//               configuration.imagePadding = 15
+//               configuration.titlePadding = 15
+//               configuration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+//               configuration.baseForegroundColor = .black
+//                   
+//               let btnPlay = UIButton(configuration: configuration)
+//               btnPlay.titleLabel?.font = UIFont.systemFont(ofSize: 13.64, weight: .heavy)
+//               
+//               btnPlay.translatesAutoresizingMaskIntoConstraints = false
+//               return btnPlay
+//           }()
+//    
+//    
+    
     
     private let infoButton : UIButton = {
        let infoButton = UIButton()
@@ -127,9 +173,11 @@ class HeroHeaderUIView: UIView {
     private func applyConstraints(){
          let playButtonContstraints = [
 //            playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            playButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 130),
+            playButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            
             playButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -35),
-            playButton.widthAnchor.constraint(equalToConstant: 100)
+            playButton.widthAnchor.constraint(equalToConstant: 110.62),
+            playButton.heightAnchor.constraint(equalToConstant: 45)
          ]
         
         let LogoImageContstraints = [
@@ -154,8 +202,8 @@ class HeroHeaderUIView: UIView {
         ]
        
         let InfoButtonConstraints = [
-            infoButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50),
-            infoButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -35)
+            infoButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
+            infoButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -28)
         ]
         let MyListButtonConstraints = [
             myListButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10 ),
