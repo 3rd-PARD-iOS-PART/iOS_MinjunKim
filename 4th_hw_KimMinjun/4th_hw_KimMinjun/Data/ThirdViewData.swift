@@ -25,7 +25,10 @@ extension ThirdViewData {
     static var thirdmodeling = [
 //        SecondViewData(title:"movie1", image_name1:"movie1",play_image:"table_playbt"),
         [ThirdViewData(title:"dkdkdkdkdk" , thirdMainImage: "movie1" , script: "내용입력"),],
-        [ThirdViewData(title:"dkdkdkdkdk" , thirdMainImage: "movie1" , script: "내용입력"),],
+        [ThirdViewData(title:"dkdkdkdkdk" , thirdMainImage: "movie2" , script: "내용입력"),],
+        [ThirdViewData(title:"dkdkdkdkdk" , thirdMainImage: "movie3" , script: "내용입력"),],
+        [ThirdViewData(title:"dkdkdkdkdk" , thirdMainImage: "movie4" , script: "내용입력"),],
+        [ThirdViewData(title:"dkdkdkdkdk" , thirdMainImage: "movie5" , script: "내용입력"),],
     ]
 }
 

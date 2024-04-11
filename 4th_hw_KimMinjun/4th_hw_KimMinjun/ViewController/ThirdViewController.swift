@@ -111,6 +111,9 @@ extension ThirdViewController : UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = ThirdViewData.thirdmodeling[indexPath.section][indexPath.row].title
         cell.textLabel?.textColor = .white
         
+        let imageName = ThirdViewData.thirdmodeling[indexPath.section][indexPath.row].thirdMainImage
+        cell.mainImage.image = UIImage(named: imageName)
+        
         
         return cell
     }

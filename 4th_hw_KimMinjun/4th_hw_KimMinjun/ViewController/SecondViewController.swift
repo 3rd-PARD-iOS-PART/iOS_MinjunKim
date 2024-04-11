@@ -126,18 +126,15 @@ extension SecondViewController : UITableViewDelegate, UITableViewDataSource {
         
         
         // cell 에 text 등록
-        cell.textLabel?.text = SecondViewData.tablemodeling[indexPath.row].title
-        cell.textLabel?.textColor = .white
-        
+        // cell.viewcell에 있는 이름.text나 image = 위치[indexPath.row].데이터쪽의 이름!
+        cell.label.text = SecondViewData.tablemodeling[indexPath.row].title
         // cell에 image 등록
         let imageName = SecondViewData.tablemodeling[indexPath.row].image_name1
-        cell.imageView?.image = UIImage(named: imageName)
-        // 왜 이미지 두개 다 안 올라감?
-//        let playImageName = SecondViewData.tablemodeling[indexPath.row].play_image
-//        cell.imageView?.image = UIImage(named: playImageName)
-        
-        
-        
+        cell.image_name1.image = UIImage(named: imageName)
+    
+        let playImageName = SecondViewData.tablemodeling[indexPath.row].play_image
+        cell.play_image.image = UIImage(named: playImageName)
+    
         
         return cell
     }
