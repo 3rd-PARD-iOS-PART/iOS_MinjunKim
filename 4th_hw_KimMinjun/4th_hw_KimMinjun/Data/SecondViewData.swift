@@ -16,13 +16,13 @@ struct SecondViewData {
 
 extension SecondViewData {
     static var tablemodeling = [
-    SecondViewData(title:"movie1", image_name1:"movie1",play_image:"table_playbt"),
-    SecondViewData(title:"movie2", image_name1:"movie2",play_image:"table_playbt"),
-    SecondViewData(title:"movie3", image_name1:"movie3",play_image:"table_playbt"),
-    SecondViewData(title:"movie4", image_name1:"movie4",play_image:"table_playbt"),
-    SecondViewData(title:"movie5", image_name1:"movie5",play_image:"table_playbt"),
-    SecondViewData(title:"movie6", image_name1:"movie6",play_image:"table_playbt"),
-    SecondViewData(title:"movie7", image_name1:"movie7",play_image:"table_playbt"),
+    SecondViewData(title:"Citation", image_name1:"movie2_1",play_image:"table_playbt"),
+    SecondViewData(title:"Oloture", image_name1:"movie2_2",play_image:"table_playbt"),
+    SecondViewData(title:"The Setup", image_name1:"movie2_3",play_image:"table_playbt"),
+    SecondViewData(title:"Breaking Bad", image_name1:"movie2_4",play_image:"table_playbt"),
+    SecondViewData(title:"Ozark", image_name1:"movie2_5",play_image:"table_playbt"),
+    SecondViewData(title:"The Governor", image_name1:"movie2_6",play_image:"table_playbt"),
+    SecondViewData(title:"Your Excellency", image_name1:"movie2_7",play_image:"table_playbt"),
        
     ]
 }

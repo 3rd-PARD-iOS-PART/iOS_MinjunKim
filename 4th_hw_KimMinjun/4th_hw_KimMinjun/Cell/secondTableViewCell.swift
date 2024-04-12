@@ -13,7 +13,7 @@ class secondTableViewCell : UITableViewCell{
 //    let image = UIImageView()
     let label : UILabel = {
         let label = UILabel()
-        label.textAlignment = .right
+        
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -65,7 +65,7 @@ class secondTableViewCell : UITableViewCell{
             
   
             label.centerYAnchor.constraint(equalTo: centerYAnchor),
-            label.centerXAnchor.constraint(equalTo: centerXAnchor),
+            label.leadingAnchor.constraint(equalTo: image_name1.trailingAnchor, constant: 7),
             
             
             play_image.centerYAnchor.constraint(equalTo: centerYAnchor),

@@ -15,9 +15,9 @@ class ThirdViewController: UIViewController {
         let tableView = UITableView ()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = . black
-        if #available(iOS 15.0, *) {
-                   tableView.sectionHeaderTopPadding = 1
-               }
+//        if #available(iOS 15.0, *) {
+//                   tableView.sectionHeaderTopPadding = 1
+//               }
         
         
         
@@ -108,13 +108,23 @@ extension ThirdViewController : UITableViewDelegate, UITableViewDataSource {
         }
         
         
-        cell.textLabel?.text = ThirdViewData.thirdmodeling[indexPath.section][indexPath.row].title
-        cell.textLabel?.textColor = .white
         
+        // 날짜
+        cell.dateLabel.text =  ThirdViewData.thirdmodeling[indexPath.section][indexPath.row].date
+       
+        // 타이틀
+        cell.titleLabel.text = ThirdViewData.thirdmodeling[indexPath.section][indexPath.row].title
+        
+        // 메인이미지
         let imageName = ThirdViewData.thirdmodeling[indexPath.section][indexPath.row].thirdMainImage
         cell.mainImage.image = UIImage(named: imageName)
         
         
+        // script 내용
+        cell.scriptLabel.text = ThirdViewData.thirdmodeling[indexPath.section][indexPath.row].script
+        
+        // category 내용
+        cell.categoryLabel.text = ThirdViewData.thirdmodeling[indexPath.section][indexPath.row].category
         return cell
     }
     
@@ -143,7 +153,7 @@ extension ThirdViewController : UITableViewDelegate, UITableViewDataSource {
     
     // 5. cell 사이 간격 조정
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-           let verticalPadding: CGFloat = 5
+           let verticalPadding: CGFloat = -5
            let maskLayer = CALayer()
            maskLayer.backgroundColor = UIColor.black.cgColor
            maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
