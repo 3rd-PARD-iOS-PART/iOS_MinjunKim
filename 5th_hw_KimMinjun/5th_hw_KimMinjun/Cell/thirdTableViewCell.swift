@@ -1,8 +1,8 @@
 //
 //  thirdTableViewCell.swift
-//  4th_hw_KimMinjun
+//  5th_hw_KimMinjun
 //
-//  Created by 김민준 on 4/10/24.
+//  Created by 김민준 on 4/18/24.
 //
 
 import UIKit
@@ -128,7 +128,7 @@ class thirdTableViewCell : UITableViewCell {
        }()
         
     
-    // 날짜 라벨 
+    // 날짜 라벨
     let dateLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 11.4 , weight: .regular)
@@ -144,7 +144,7 @@ class thirdTableViewCell : UITableViewCell {
          fatalError("init(coder:) has not been implemented")
      }
     
-    // 직접 만드는 경우 initialize 해주
+    // 직접 만드는 경우 initialize 해주기
     override init(style: UITableViewCell.CellStyle, reuseIdentifier : String?){
         super.init(style: style, reuseIdentifier: "thirdCell")
         
@@ -194,8 +194,20 @@ class thirdTableViewCell : UITableViewCell {
             categoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             
+          
+            
+            
+            
+            
+            
         ])
 
     }
     
+    
+    
+    
+    
+    
 }
+
