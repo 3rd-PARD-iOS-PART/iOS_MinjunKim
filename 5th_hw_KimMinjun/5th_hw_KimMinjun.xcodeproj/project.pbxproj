@@ -31,6 +31,7 @@
 		48749F082BDE9F8A00A0C86B /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48749F072BDE9F8A00A0C86B /* ModalViewController.swift */; };
 		48749F0A2BDEA05300A0C86B /* ModalViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48749F092BDEA05300A0C86B /* ModalViewData.swift */; };
 		48749F0C2BDEA08000A0C86B /* modalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48749F0B2BDEA08000A0C86B /* modalTableViewCell.swift */; };
+		48749F102BE4BCBA00A0C86B /* modalHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48749F0F2BE4BCBA00A0C86B /* modalHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		48749F072BDE9F8A00A0C86B /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		48749F092BDEA05300A0C86B /* ModalViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewData.swift; sourceTree = "<group>"; };
 		48749F0B2BDEA08000A0C86B /* modalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modalTableViewCell.swift; sourceTree = "<group>"; };
+		48749F0F2BE4BCBA00A0C86B /* modalHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modalHeaderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 				48749E822BD10F1B00A0C86B /* secondTableViewCell.swift */,
 				48749E842BD10F3200A0C86B /* thirdTableViewCell.swift */,
 				48749F0B2BDEA08000A0C86B /* modalTableViewCell.swift */,
+				48749F0F2BE4BCBA00A0C86B /* modalHeaderCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				48749E832BD10F1B00A0C86B /* secondTableViewCell.swift in Sources */,
 				48749E432BCCF08900A0C86B /* AppDelegate.swift in Sources */,
 				48749E7E2BD10E9E00A0C86B /* HeadearUIView.swift in Sources */,
+				48749F102BE4BCBA00A0C86B /* modalHeaderCell.swift in Sources */,
 				48749E452BCCF08900A0C86B /* SceneDelegate.swift in Sources */,
 				48749E7A2BD10E6100A0C86B /* ForthViewController.swift in Sources */,
 				48749E7C2BD10E7D00A0C86B /* FifthViewController.swift in Sources */,
