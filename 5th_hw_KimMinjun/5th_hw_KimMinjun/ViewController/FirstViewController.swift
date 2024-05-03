@@ -36,12 +36,20 @@ class FirstViewController: UIViewController {
         firstTable.dataSource = self
         firstTable.backgroundColor = .black
         
+        
+        
+        // navigation var 스크롤 내릴때 투명하게 하기
         navigationController?.isNavigationBarHidden = true
+        
+        
+        // 셀 등록
         firstTable.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        
+        
 //        헤더뷰 설정
         let headerView = HeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width , height: 450))
         firstTable.tableHeaderView = headerView
-        
         
     }
     

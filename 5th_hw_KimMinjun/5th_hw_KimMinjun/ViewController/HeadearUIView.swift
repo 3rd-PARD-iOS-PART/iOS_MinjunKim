@@ -20,24 +20,7 @@ class HeaderUIView: UIView {
         button.alignTextBelow(spacing: 4)
         return button
     }()
-//    private let playButton : UIButton = {
-//       let button = UIButton()
-//
-//        button.setTitle("Play", for: .normal)
-//        button.layer.borderColor = UIColor.white.cgColor
-//        button.layer.borderWidth = 1
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.setImage(UIImage(named: "Vector")?.withRenderingMode(.alwaysOriginal), for: .normal)
-//        button.setTitleColor(.black, for: .normal)
-//        button.layer.cornerRadius = 10
-//
-//
-//        button.setBackgroundColor(.white, for: .normal)
-//        button.setBackgroundColor(.gray, for: .selected)
-//        button.setBackgroundColor(.gray, for: .disabled)
-//        return button
-//    }()
-    
+
     
 
     let playButton : UIButton = {

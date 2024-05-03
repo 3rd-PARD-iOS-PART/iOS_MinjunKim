@@ -8,10 +8,11 @@
 import UIKit
 
 
-class ModalViewController : UIViewController {
+final class ModalViewController : UIViewController {
     // 테이블 뷰 생성
     let modalTable : UITableView = {
-       let tableView = UITableView()
+//    frame: .zero, style: .grouped
+        let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .black
         return tableView
@@ -24,7 +25,12 @@ class ModalViewController : UIViewController {
         //tableview의 dataSource와 delegate 생성
         modalTable.delegate = self
         modalTable.dataSource = self
-       
+
+        // navigation var 스크롤 내릴때 투명하게 하기
+        navigationController?.isNavigationBarHidden = true
+        
+//
+
         
     }
     
@@ -39,6 +45,11 @@ class ModalViewController : UIViewController {
     
     // MARK: - 컴포넌트 만들기
     func setUI(){
+        
+//         header 만들기
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 653))
+//        header.translatesAutoresizingMaskIntoConstraints = false
+        
         
         
         // 메인 이미지
@@ -403,33 +414,43 @@ class ModalViewController : UIViewController {
         
         
         
+       
+        
+        
+        
         
         
         // 뷰에 올리기
-        view.addSubview(mainImage)
-        view.addSubview(mirrorButton)
-        view.addSubview(xButton)
-        view.addSubview(series)
-        view.addSubview(logo)
-        view.addSubview(titleLabel)
-        view.addSubview(yearLabel)
         
-        view.addSubview(tvma)
-        view.addSubview(season)
-        view.addSubview(vision)
-        view.addSubview(season)
-        view.addSubview(hd)
-        view.addSubview(ad)
-        view.addSubview(playButton)
-        view.addSubview(downloadButton)
-        view.addSubview(subTitle)
-        view.addSubview(subtext)
-        view.addSubview(mylistButton)
-        view.addSubview(rateButton)
-        view.addSubview(shareButton)
-        view.addSubview(tabBarImage)
-        view.addSubview(toggleLabel)
-        view.addSubview(toggleImage)
+        header.addSubview(mainImage)
+        header.addSubview(mirrorButton)
+        header.addSubview(xButton)
+        header.addSubview(series)
+        header.addSubview(logo)
+        header.addSubview(titleLabel)
+        header.addSubview(yearLabel)
+        
+        header.addSubview(tvma)
+        header.addSubview(season)
+        header.addSubview(vision)
+        header.addSubview(season)
+        header.addSubview(hd)
+        header.addSubview(ad)
+        header.addSubview(playButton)
+        header.addSubview(downloadButton)
+        header.addSubview(subTitle)
+        header.addSubview(subtext)
+        header.addSubview(mylistButton)
+        header.addSubview(rateButton)
+        header.addSubview(shareButton)
+        header.addSubview(tabBarImage)
+        header.addSubview(toggleLabel)
+        header.addSubview(toggleImage)
+        
+       
+        header.translatesAutoresizingMaskIntoConstraints = false
+        
+        modalTable.tableHeaderView = header
         
         view.addSubview(modalTable)
         
@@ -437,41 +458,46 @@ class ModalViewController : UIViewController {
         modalTable.register(modalTableViewCell.self, forCellReuseIdentifier: "modal")
         
     
+        
+       
+    
         //MARK: - 오토레이아웃
         NSLayoutConstraint.activate([
-            mainImage.topAnchor.constraint(equalTo: view.topAnchor),
-            mainImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            mainImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            header.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            header.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            header.topAnchor.constraint(equalTo: view.topAnchor),
+            header.heightAnchor.constraint(equalToConstant: 653),
+            
+            
+            mainImage.topAnchor.constraint(equalTo: header.topAnchor),
+            mainImage.leadingAnchor.constraint(equalTo: header.leadingAnchor),
+            mainImage.trailingAnchor.constraint(equalTo: header.trailingAnchor),
             mainImage.heightAnchor.constraint(equalToConstant: 210),
-
             
-            
-            
-            mirrorButton.topAnchor.constraint(equalTo: view.topAnchor , constant: 8),
-            mirrorButton.leadingAnchor.constraint(equalTo: view.leadingAnchor , constant: 295),
+            mirrorButton.topAnchor.constraint(equalTo: header.topAnchor , constant: 8),
+            mirrorButton.leadingAnchor.constraint(equalTo: header.leadingAnchor , constant: 295),
             mirrorButton.widthAnchor.constraint(equalToConstant: 28),
             mirrorButton.heightAnchor.constraint(equalToConstant: 28),
             
             
-            
-            xButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 8),
-            xButton.leadingAnchor.constraint(equalTo: view.leadingAnchor , constant: 339),
+            xButton.topAnchor.constraint(equalTo: header.topAnchor, constant: 8),
+            xButton.leadingAnchor.constraint(equalTo: header.leadingAnchor , constant: 339),
             xButton.widthAnchor.constraint(equalToConstant: 28),
             xButton.heightAnchor.constraint(equalToConstant: 28),
             
             
             logo.topAnchor.constraint(equalTo: mainImage.bottomAnchor , constant: 11),
-            logo.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor , constant: 8),
+            logo.leadingAnchor.constraint(equalTo: header.safeAreaLayoutGuide.leadingAnchor , constant: 8),
             logo.widthAnchor.constraint(equalToConstant: 25),
             logo.heightAnchor.constraint(equalToConstant: 25),
             
             series.topAnchor.constraint(equalTo: mainImage.bottomAnchor, constant: 15),
             series.leadingAnchor.constraint(equalTo: logo.trailingAnchor, constant: 0),
             
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 8),
             titleLabel.topAnchor.constraint(equalTo: logo.bottomAnchor, constant:  0),
             
-            yearLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            yearLabel.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 8),
             yearLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 9.5),
             
             tvma.leadingAnchor.constraint(equalTo: yearLabel.trailingAnchor, constant: 4),
@@ -491,24 +517,24 @@ class ModalViewController : UIViewController {
             ad.leadingAnchor.constraint(equalTo: hd.trailingAnchor , constant: 4),
             ad.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
             
-            playButton.leadingAnchor.constraint(equalTo: view.leadingAnchor ,constant: 8),
-            playButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            playButton.leadingAnchor.constraint(equalTo: header.leadingAnchor ,constant: 8),
+            playButton.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -8),
             playButton.topAnchor.constraint(equalTo: vision.bottomAnchor, constant: 11),
             playButton.heightAnchor.constraint(equalToConstant: 34),
             
-            downloadButton.leadingAnchor.constraint(equalTo: view.leadingAnchor ,constant: 8),
-            downloadButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            downloadButton.leadingAnchor.constraint(equalTo: header.leadingAnchor ,constant: 8),
+            downloadButton.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -8),
             downloadButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 8),
             downloadButton.heightAnchor.constraint(equalToConstant: 34),
 
-            subTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            subTitle.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 8),
             subTitle.topAnchor.constraint(equalTo: downloadButton.bottomAnchor, constant: 14),
             
-            subtext.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            subtext.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 8),
             subtext.topAnchor.constraint(equalTo: subTitle.bottomAnchor, constant: 4),
             
             
-            mylistButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 31),
+            mylistButton.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 31),
             mylistButton.topAnchor.constraint(equalTo: subtext.bottomAnchor, constant: 32),
             
             rateButton.leadingAnchor.constraint(equalTo: mylistButton.trailingAnchor ,constant: 56),
@@ -518,11 +544,11 @@ class ModalViewController : UIViewController {
             shareButton.topAnchor.constraint(equalTo: subtext.bottomAnchor, constant: 32),
             
             
-            tabBarImage.leadingAnchor.constraint(equalTo: view.leadingAnchor ,constant: 16),
+            tabBarImage.leadingAnchor.constraint(equalTo: header.leadingAnchor ,constant: 16),
             tabBarImage.topAnchor.constraint(equalTo: mylistButton.bottomAnchor, constant: 36),
-            tabBarImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -34),
+            tabBarImage.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -34),
             
-            toggleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            toggleLabel.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 16),
             toggleLabel.topAnchor.constraint(equalTo: tabBarImage.bottomAnchor, constant: 31),
             
             toggleImage.leadingAnchor.constraint(equalTo: toggleLabel.trailingAnchor, constant: 10),
@@ -533,8 +559,12 @@ class ModalViewController : UIViewController {
             
             
             
+           
+
             
-            modalTable.topAnchor.constraint(equalTo: toggleLabel.bottomAnchor, constant: 20),
+            
+//            modalTable.topAnchor.constraint(equalTo: toggleLabel.bottomAnchor ,constant:0),
+            modalTable.topAnchor.constraint(equalTo: view.topAnchor),
             modalTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             modalTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             modalTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -576,35 +606,41 @@ extension ModalViewController : UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = ModalViewData.modalModeling[indexPath.section][indexPath.row].title
         cell.timeLabel.text = ModalViewData.modalModeling[indexPath.section][indexPath.row].time
         cell.scriptLabel.text = ModalViewData.modalModeling[indexPath.section][indexPath.row].script
-    
-                
-       return cell
+        
+        
+        return cell
     }
     
-
-
+    
+    
     // cell 의 높이 지정
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
     
-  
-
+    
+    
     
     
     // 5. cell 사이 간격 조정
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-           let verticalPadding: CGFloat = 0
-           let maskLayer = CALayer()
-           maskLayer.backgroundColor = UIColor.black.cgColor
-           maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
-           cell.layer.mask = maskLayer
-       }
-    
-    
-    
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        <#code#>
+        let verticalPadding: CGFloat = 0
+        let maskLayer = CALayer()
+        maskLayer.backgroundColor = UIColor.black.cgColor
+        maskLayer.frame = CGRect(x: cell.bounds.origin.x, y: cell.bounds.origin.y, width: cell.bounds.width, height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
+        cell.layer.mask = maskLayer
     }
+    
+    
+    
+//    // header 설정
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        guard let  modalHeaderView = tableView.dequeueReusableHeaderFooterView(withIdentifier: modalHeaderView.headerViewID)as? modalHeaderView else{
+//            return UIView()
+//        }
+//        
+//        return modalHeaderView
+//    }
+//    
+    
 }
