@@ -453,7 +453,7 @@ final class ModalViewController : UIViewController {
         modalTable.tableHeaderView = header
         
         view.addSubview(modalTable)
-        
+        modalTable.addSubview(header)
         // 셀 등록하기
         modalTable.register(modalTableViewCell.self, forCellReuseIdentifier: "modal")
         
