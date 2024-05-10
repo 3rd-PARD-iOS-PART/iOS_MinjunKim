@@ -20,7 +20,7 @@ class SecondViewController: UIViewController, UISearchBarDelegate {
        return tableViewUI
     }()
 
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -182,8 +182,8 @@ extension SecondViewController : UITableViewDelegate, UITableViewDataSource {
             
         }
     }
-    
-    // 모달창 여는 메소드 
+    //modalVC 바로 사용 가능 
+    // 모달창 여는 메소드
     @objc func openModal(){
         let modalVC = ModalViewController()
         let navController = UINavigationController(rootViewController: modalVC)
