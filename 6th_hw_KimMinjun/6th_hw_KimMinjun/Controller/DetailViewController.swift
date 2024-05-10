@@ -36,8 +36,9 @@ class DetailViewController : UIViewController {
     
     let nameLabel : UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20 , weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 40 , weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .black
         return label
     }()
     
@@ -45,6 +46,7 @@ class DetailViewController : UIViewController {
     let ageLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13 , weight: .medium)
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -52,7 +54,7 @@ class DetailViewController : UIViewController {
     let partLabel : UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13 , weight: .medium)
-        
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -62,14 +64,33 @@ class DetailViewController : UIViewController {
     
     
     
+    
+    // MARK: - main
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         deleteButton.addTarget(self, action: #selector(buttonTap), for: .touchUpInside)
-
+        configure()
         setUI()
     }
     
+    // 데이터 받아온거 컴포넌트에 넣기
+    func configure() {
+        guard let member = member else {
+            return
+        }
+        nameLabel.text = member.name
+        partLabel.text = "Part : \(member.part)"
+        ageLabel.text = "Age : \(member.age)"
+        
+//        데이터 전달 성공했는지 확인용
+//        print(member.name)
+//        print(member.part)
+//        print(member.age)
+        
+    }
+    
+    // 삭제 버튼 눌렀을떄
     @objc func buttonTap(){
         let alert = UIAlertController(title: "정말로 삭제하시겠습니다?", message: "삭제한 내용은 다시 되돌릴 수 없습니다.", preferredStyle: .alert)
         
@@ -90,12 +111,13 @@ class DetailViewController : UIViewController {
     }
     
     
-    // data 삭제하기
+    //MARK: -DELETE:  data 삭제하기
     func deleteData(_ member: Data){
+        
         guard let id = member.id else{ return }
         
         // 1. url 만들기
-        let url = "https://pard-host.onrender.com/pard\(id)"
+        let url = "https://pard-host.onrender.com/pard/\(id)"
         guard let deleteUrl = URL(string: url) else{
             print("🚨 error: Invalid URL")
             return
@@ -105,7 +127,7 @@ class DetailViewController : UIViewController {
         request.httpMethod = "DELETE"
         
         
-        //3. url session task 만들기
+        //3. url session task 만들고 처리하기 
         let task = URLSession.shared.dataTask(with: request) { data, response , error in
             if let error = error{
                 print("🚨🚨delete task error \(error)")
@@ -115,9 +137,9 @@ class DetailViewController : UIViewController {
                     self.viewController?.readData()
                 }
             } else{
+                
                 print("🚨 error : No Data ")
             }
-        
         }
         task.resume()
 
@@ -129,7 +151,7 @@ class DetailViewController : UIViewController {
     
     
     
-    
+    //MARK: - UI 올리고 오토레이아웃잡기
     func setUI(){
         view.addSubview(deleteButton)
         view.addSubview(editButton)
@@ -159,16 +181,6 @@ class DetailViewController : UIViewController {
         ])
     }
     
-    
-    // 데이터 받아온거 컴포넌트에 넣기
-    func configure() {
-        guard let member = member else {
-            return
-        }
-        nameLabel.text = member.name
-        partLabel.text = "Part : \(member.part)"
-        ageLabel.text = "Age : \(member.age)"
-    }
     
     
     

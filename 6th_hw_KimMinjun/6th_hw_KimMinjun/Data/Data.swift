@@ -23,17 +23,4 @@ struct Data: Decodable, Encodable{
     }
 }
 
-//
-//struct MemberData: Decodable, Encodable {
-//    let id: Int?
-//    let name: String
-//    let part: String
-//    let age: Int
-//    
-//    init(id: Int? = nil, name: String, part: String, age: Int) {
-//        self.id = id
-//        self.name = name
-//        self.part = part
-//        self.age = age
-//    }
-//}
+

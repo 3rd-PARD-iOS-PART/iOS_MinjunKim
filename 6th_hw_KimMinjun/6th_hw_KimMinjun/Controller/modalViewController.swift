@@ -14,7 +14,6 @@ class modalViewController : UIViewController {
         button.setTitle("추가하기", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
         return button
     }()
     
@@ -29,10 +28,8 @@ class modalViewController : UIViewController {
         textField.textColor = .black
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.layer.borderWidth = 1.0
-        textField.autocorrectionType = .no
-        textField.spellCheckingType = .no
-       
-
+        textField.autocorrectionType = .no // 텍스트 필드 타임아웃 버그 해결 : 수정 제안 삭제하기
+        textField.spellCheckingType = .no // 텍스트 필드 타임아웃 버그 해결 : 수정 제안 삭제하기
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -45,10 +42,8 @@ class modalViewController : UIViewController {
         textField.textColor = .black
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.layer.borderWidth = 1.0
-        
-        textField.autocorrectionType = .no
-           textField.spellCheckingType = .no
-       
+        textField.autocorrectionType = .no  // 텍스트 필드 타임아웃 버그 해결 : 수정 제안 삭제하기
+        textField.spellCheckingType = .no // 텍스트 필드 타임아웃 버그 해결 : 수정 제안 삭제하기
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -60,11 +55,8 @@ class modalViewController : UIViewController {
         textField.textColor = .black
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.layer.borderWidth = 1.0
-        
-        textField.autocorrectionType = .no
-           textField.spellCheckingType = .no
-       
-
+        textField.autocorrectionType = .no  // 텍스트 필드 타임아웃 버그 해결 : 수정 제안 삭제하기
+        textField.spellCheckingType = .no // 텍스트 필드 타임아웃 버그 해결 : 수정 제안 삭제하기
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -165,21 +157,21 @@ class modalViewController : UIViewController {
     // MARK: - POST 함수 만들기
     
     func postRequest(_ member: Data ){
-        // url 생성하기
+        // 1. url 생성하기
         guard let url = URL(string: "https://pard-host.onrender.com/pard") else{
             print("🚨 Invalid URL!")
             return
         }
-        
+        // 2. url session 만들기
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.addValue("applicaition/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do{
             let encoder = JSONEncoder()
             let jsonData = try encoder.encode(member)
             request.httpBody = jsonData
-            
+            // 3. dataTask 만들고 처리하기
             let task = URLSession.shared.dataTask(with: request){data, response, error in
                 if let error = error {
                     print("🚨 error", error)
@@ -217,16 +209,10 @@ class modalViewController : UIViewController {
                 return
             }
             
-            
+            // 새로운 데이터 추가하고 창 닫기
             let newMember = Data(name: name, part: part, age: age)
             postRequest(newMember )
             dismiss(animated: true)
-//            self.dismiss(animated: true, completion: nil)
-            
         }
-        
-
-        
-        
-        
+    
     }

@@ -42,7 +42,7 @@ class ViewController: UIViewController {
    
     
    
-    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         // UI 올리기
@@ -94,18 +94,17 @@ class ViewController: UIViewController {
     //MARK: - GET 구현 :  데이터 받아서 보여주기
     func readData() {
         
-        // 1. url session 만들기
+        // 1. url  만들기
         if let url  = URL(string: "https://pard-host.onrender.com/pard"){
-            // 2. url
+            // 2. url session 만들기
             let session = URLSession(configuration: .default)
-            
-            
+    
+            // 3. dataTask 만들고 처리하기
             let task = session.dataTask(with: url){ data, response, error in
                 if error != nil {
                     print("🚨fail",error!)
                     return
                 }
-                
                 
                 if let JSONdata = data {
                     let dataString = String(data: JSONdata, encoding: .utf8)
@@ -127,9 +126,6 @@ class ViewController: UIViewController {
             }
             task.resume()
         }
-        
-        
-        
         
     }
     
@@ -171,7 +167,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     
-            
+           // 셀을 클릭했을때 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 // DetailViewController로 데이터 보내기
                 let passMember = member[indexPath.row]
@@ -180,8 +176,8 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
                 detailViewController.member = passMember
                 detailViewController.viewController = self
                             
-                present(detailViewController, animated: true)
-        
+                present(detailViewController, animated: true, completion: nil)
+    
     }
             
     

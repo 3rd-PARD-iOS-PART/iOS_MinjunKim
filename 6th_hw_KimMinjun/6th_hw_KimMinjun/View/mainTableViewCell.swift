@@ -24,7 +24,7 @@ class mainTableViewCell : UITableViewCell {
         return label
     }()
     
-    
+    //MARK: - 메인
     override init(style: UITableViewCell.CellStyle, reuseIdentifier : String?){
         super.init(style: style, reuseIdentifier:   "maincell")
         contentView.backgroundColor = .clear
@@ -35,7 +35,7 @@ class mainTableViewCell : UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-  
+  // MARK: - UI 올리고 오토레이아웃 잡기
     func setUI(){
        
         
