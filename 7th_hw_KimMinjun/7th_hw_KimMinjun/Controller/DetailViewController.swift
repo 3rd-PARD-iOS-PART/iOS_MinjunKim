@@ -1,10 +1,9 @@
 //
 //  DetailViewController.swift
-//  6th_hw_KimMinjun
+//  7th_hw_KimMinjun
 //
-//  Created by 김민준 on 5/9/24.
+//  Created by 김민준 on 5/12/24.
 //
-
 
 import UIKit
 
@@ -71,7 +70,6 @@ class DetailViewController : UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         deleteButton.addTarget(self, action: #selector(buttonTap), for: .touchUpInside)
-        editButton.addTarget(self, action: #selector(editTap), for: .touchUpInside)
         configure()
         setUI()
     }
@@ -113,123 +111,13 @@ class DetailViewController : UIViewController {
     }
     
     
-    
-    
-    //MARK: - eidt 버튼
-    @objc func editTap() {
-        let alert = UIAlertController(title: "정보 변경하시겠습니까?", message: "", preferredStyle: .alert)
-        let cancel = UIAlertAction(title: "취소", style: .default, handler: nil)
-        let delete = UIAlertAction(title: "확인", style: .destructive) { _ in
-            if let member = self.member {
-                self.editData(member)
-            }
-            self.dismiss(animated: true, completion: nil)
-        }
-
-        alert.addTextField { text in
-            text.text = self.member?.name ?? ""
-        }
-
-        alert.addTextField { text in
-            text.text = String(self.member?.age ?? 0)
-        }
-
-        alert.addTextField { text in
-            text.text = self.member?.part ?? ""
-        }
-
-        if let textFields = alert.textFields, let member = self.member {
-            let nameTextField = textFields[0]
-            let ageTextField = textFields[1]
-            let partTextField = textFields[2]
-
-            member.name = nameTextField.text ?? ""
-            member.age = Int(ageTextField.text ?? "0") ?? 0
-            member.part = partTextField.text ?? ""
-        }
-
-        alert.addAction(cancel)
-        alert.addAction(delete)
-        present(alert, animated: true)
-    }
-    
-    
-    //MARK: - PATCH 구현
-    func editData(_ member: Data){
-        guard let id = member.id else{ return }
-        print(id)
-        // 1. url 만들기
-        let url = "http://172.17.201.143:8080/pard/update/\(id)"
-        guard let editUrl = URL(string: url) else{
-            print("🚨 error: Invalid URL")
-            return
-        }
-        // 2. url session 만들기
-        var request = URLRequest(url: editUrl)
-        request.httpMethod = "PATCH"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        //3. url session task 만들고 처리하기
-        let task = URLSession.shared.dataTask(with: request) { data, response , error in
-            guard error == nil else {
-                print("🚨🚨edit task error \(error)")
-                return
-            }
-            guard let data = data else {
-                print("🚨🚨data error")
-                return
-            }
-            do{
-                let encoder = JSONEncoder()
-                let jsonData = try encoder.encode(member)
-                request.httpBody = jsonData
-                // 3. dataTask 만들고 처리하기
-                let task = URLSession.shared.dataTask(with: request){data, response, error in
-                    if let error = error {
-                        print("🚨 error", error)
-                        
-                    }else if let data = data {
-                        if let respondString = String(data: data, encoding: .utf8){
-                            print("🟢response: \(respondString)")
-                            DispatchQueue.main.async{
-                                self.viewController?.readData()
-                            }
-                        }
-                      }
-                    }
-                    task.resume()
-                }catch{
-                    print("🚨 error", error)
-                }
-            
-//            if let error = error{
-//                print("🚨🚨edit task error \(error)")
-//            }else if let editResponse = response as? HTTPURLResponse ,editResponse.statusCode == 200{
-//                print("🟢edit success!")
-//                DispatchQueue.main.async{
-//                    self.viewController?.readData()
-//                }
-//            } else{
-//                print("🚨 error : No Data ")
-//            }
-        }
-        task.resume()
-
-    }
-    
-    
-    
-    
-    
-    
-    
     //MARK: -DELETE:  data 삭제하기
     func deleteData(_ member: Data){
         
         guard let id = member.id else{ return }
         
         // 1. url 만들기
-        let url = "http://172.17.201.143:8080/pard/\(id)"
+        let url = "https://pard-host.onrender.com/pard/\(id)"
         guard let deleteUrl = URL(string: url) else{
             print("🚨 error: Invalid URL")
             return
@@ -297,7 +185,3 @@ class DetailViewController : UIViewController {
     
     
 }
-
-
-
-
